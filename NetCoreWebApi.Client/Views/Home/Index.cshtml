@@ -1,0 +1,11 @@
+﻿@using NetCoreWebApi.Models.Concrete;
+@model IEnumerable<CategoryDTO>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@foreach(var item in Model)
+{
+    @item.Id
+    @item.Name
+}
