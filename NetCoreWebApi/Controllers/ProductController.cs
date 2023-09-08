@@ -38,7 +38,7 @@ namespace NetCoreWebApi.Controllers
             return Ok(prod);    
         }
 
-        [HttpPost("UpdateProduct")]
+        [HttpPut("UpdateProduct")]
         public async Task<IActionResult> Update (ProductDTO productDTO)
         {
             var prod = await _prod.Update(productDTO);

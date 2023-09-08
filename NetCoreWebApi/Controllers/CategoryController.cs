@@ -49,7 +49,7 @@ namespace NetCoreWebApi.Controllers
             return Ok(cat);
         }
 
-        [HttpPost("UpdateCategory")]
+        [HttpPut("UpdateCategory")]
         public async Task<IActionResult> Update (CategoryDTO category)
         {
            var cat = await _categoryRepository.Update(category);

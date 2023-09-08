@@ -30,9 +30,18 @@ namespace NetCoreWebApi.Client.Controllers
             return View(cat);
         }
 
-        public IActionResult Privacy()
+        public async Task<IActionResult> Privacy()
         {
-            return View();
+            var prod = new List<ProductDTO>();
+            using(HttpClient cl = new HttpClient())
+            {
+                using(var respoen = await cl.GetAsync("https://localhost:7175/api/Product/GettAllProducts"))
+                {
+                    string apres= await respoen.Content.ReadAsStringAsync();
+                    prod = JsonConvert.DeserializeObject<List<ProductDTO>>(apres);
+                }
+            }
+            return View(prod);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
